@@ -1,0 +1,30 @@
+{% extends 'manager_app/base.html' %}
+
+{% block content %}
+    <span>
+        <table border="3" bordercolor = "pink">
+            <caption>{{ course }}'s data view</caption>
+            <tr>
+                <th>Course</th>
+                <th><a href="#">No. of students offering</a></th>
+                <th>Students</th>
+            </tr>
+
+            <tr>
+                <td>{{ course }}</td>
+                <td>{{ course.students_set.count }}</td>
+            </tr>
+        </table>
+        <table border="2" bordercolor=" cyan">
+            <caption>{{ course }}'s students</caption>
+            <tr>
+                <td>Students</td>
+            </tr>
+            <tr>
+                {% for student in course.students_set.all %}
+                    <td>{{ student }}</td>
+                {% endfor %}
+            </tr>
+        </table>
+    </span>
+{% endblock content %}

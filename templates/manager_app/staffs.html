@@ -1,0 +1,28 @@
+{% extends 'manager_app/base.html' %}
+
+{% block content %}
+    <a href="{% url 'create-staff' %}">Add New Staff</a>
+    <table border="6" bordercolor = 'black' width="800" height = "150">
+        <caption>Staff's Data</caption>
+            <tr>
+                <th>Name</th>
+                <th>lecturing course</th>
+                <th>number of courses taken</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Job Type</th>
+                <th>Date Employed</th>
+            </tr>
+        {% for staff in staffs %}
+            <tr>
+                <td><a href="{% url 'staff-data' staff.id %}">{{ staff.name }}</a></td>
+                <td>{{ staff.lecture_course }}</td>
+                <td>{{ staff.course_length }}</td>
+                <td>{{ staff.email }}</td>
+                <td>{{ staff.phone_number }}</td>
+                <td>{{ staff.job_type }}</td>
+                <td>{{ staff.date_employed|date:"F d Y" }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}

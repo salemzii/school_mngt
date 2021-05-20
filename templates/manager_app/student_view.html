@@ -1,0 +1,30 @@
+{% extends 'manager_app/base.html' %}
+
+{% block content %}
+    <a href="{% url 'update-student' student.id %}">Update {{ student.name }}'s details</a> <br>
+    <a href="{% url 'delete-student' student.id %}">Delete {{ student.name }}'s details from database?</a>
+    <table border="3" bordercolor = "cyan" width="800">
+        <tr>
+            <th>Name</th>
+            <th>Course</th>
+            <th>Level</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Matric Number</th>
+            <th>Date Admitted</th>
+        </tr>
+        <tr>
+            <td><a href="{% url 'student-data' student.id %}">{{ student.name }}</a></td>
+            <td>{{ student.course }}</td>
+            {% if student.level <= 4 %}
+                <td>{{ student.level }}</td>
+            {% else %}
+                <td>Graduated</td>
+            {% endif %}
+            <td>{{ student.email }}</td>
+            <td>{{ student.phone_number }}</td>
+            <td>{{ student.matric_number }}</td>z
+            <td>{{ student.date_admitted| date:"d M Y" }}</td>
+        </tr>
+    </table>
+{% endblock content %}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>School management system</title>
+    {% endif %}
+</head>
+<body>
+    <nav>
+        <ul>
+            <a href="{% url 'home' %}"><li>Home</li></a>
+            <a href="#"><li>Events</li></a>
+            <a href="{% url 'students' %}"><li>Students</li></a>
+            <a href="{% url 'staffs' %}"><li>Staffs</li></a>
+            <a href="#"><li>About</li></a>
+            <a href="{% url 'courses' %}"><li>Courses</li></a>
+        </ul>
+    </nav>
+
+{% block content %}
+{% endblock %}
+</body>
+</html>

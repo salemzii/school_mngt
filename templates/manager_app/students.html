@@ -1,0 +1,32 @@
+{% extends 'manager_app/base.html' %}
+
+{% block content %}
+    <a href="{% url 'create-student' %}">Add New Student</a>
+    <table border="6" bordercolor = 'black' width="300">
+        <caption>Students Data</caption>
+            <tr>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Level</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Matric Number</th>
+                <th>Date Admitted</th>
+            </tr>
+        {% for student in students %}
+            <tr>
+                <td><a href="{% url 'student-data' student.id %}">{{ student.name }}</a></td>
+                <td>{{ student.course }}</td>
+                {% if student.level <= 4 %}
+                    <td>{{ student.level }}</td>
+                {% else %}
+                    <td>Graduated</td>
+                {% endif %}
+                <td>{{ student.email }}</td>
+                <td>{{ student.phone_number }}</td>
+                <td>{{ student.matric_number }}</td>z
+                <td>{{ student.date_admitted| date:"d M Y" }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}

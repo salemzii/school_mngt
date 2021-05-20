@@ -1,0 +1,18 @@
+{% extends 'manager_app/base.html' %}
+{% block content %}
+
+<table border="5" bordercolor="black" width="200">
+    <caption>Course Table</caption>
+    <tr>
+        <th>Course</th>
+        <th>No. of students offering</th>
+    </tr>
+        {% for course in courses %}
+            <tr>
+                <td><a href="{% url 'course-data' course.id %}">{{ course }}</a></td>
+                <td>{{ course.students_set.count }}</td>
+            </tr>
+        {% endfor %}
+</table>
+
+{% endblock content %}

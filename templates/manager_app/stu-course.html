@@ -1,0 +1,36 @@
+{% extends 'manager_app/base.html' %}
+{% block content %}
+
+    {% for course in courses %}
+        <table border="2" bordercolor="black" width="700">
+            <caption><a href="#">{{ course }}'s data</a> </caption>
+            <tr>
+                <th>Name</th>
+                <th>Level</th>
+                <th>Email</th>
+                <th>Phone number</th>
+                <th>Matric Number</th>
+                <th>Date Admitted</th>
+            </tr>
+            {% for student_set in course.students_set.all %}
+                {% for student in students %}
+                    {% if student_set == student %}
+                        <tr>
+                            <td>{{ student.name }}</td>
+                            {% if student.level <= 4 %}
+                                <td>{{ student.level }}</td>
+                            {% else %}
+                                <td>Graduated</td>
+                            {% endif %}
+                            <td>{{ student.email }}</td>
+                            <td>{{ student.phone_number }}</td>
+                            <td>{{ student.matric_number }}</td>
+                            <td>{{ student.date_admitted|date:'Y m d' }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </table>
+    {% endfor %}
+
+{% endblock content %}

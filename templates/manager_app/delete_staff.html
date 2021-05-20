@@ -1,0 +1,8 @@
+{% extends 'manager_app/base.html' %}
+{% block content %}
+    <p>Are you sure you want to delete {{ object.name }}'s data?</p>
+    <form method="post">
+        {% csrf_token %}
+        <span><button type="submit">Yes Remove</button> <a href="{% url 'staffs' %}">Go back</a></span>
+    </form>
+{% endblock content %}
